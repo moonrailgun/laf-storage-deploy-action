@@ -15,7 +15,8 @@ jobs:
       - name: Deploy to laf
         uses: moonrailgun/laf-storage-deploy-action@master
         with:
-          server-url: "https://laf.dev"
+          server-url: "https://api.laf.dev"
           laf-pat: ${{ secrets.LAF_PAT }}
+          laf-appid: ${{ secrets.LAF_APPID }}
           dist-path: "./test"
           bucket-name: ${{ secrets.LAF_BUCKET_NAME }}

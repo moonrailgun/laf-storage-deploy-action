@@ -10,6 +10,9 @@ inputs:
   laf-pat:
     description: 'Laf pat which use for login.'
     required: true
+  laf-appid:
+    description: 'Laf appid which use for upload.'
+    required: true
   dist-path:
     description: 'The path which upload static file'
     required: false
