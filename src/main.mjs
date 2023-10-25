@@ -9,14 +9,19 @@ const input = {
   bucketName: core.getInput('bucket-name'),
 };
 
-$`npm i laf-cli -g`;
+try {
+  await $`npm i laf-cli -g`;
 
-$`laf user add dev -r ${input.serverUrl}`;
-$`laf user switch dev`;
-$`laf user list`;
-$`laf login ${input.lafPat}`;
-$`laf storage list`;
+  await $`laf user add dev -r ${input.serverUrl}`;
+  await $`laf user switch dev`;
+  await $`laf user list`;
+  await $`laf login ${input.lafPat}`;
+  await $`laf storage list`;
 
-cd(input.distPath);
+  cd(input.distPath);
 
-$`laf storage push ${input.bucketName} ./`;
+  await $`laf storage push ${input.bucketName} ./`;
+} catch (p) {
+  console.log(`Exit code: ${p.exitCode}`)
+  console.log(`Error: ${p.stderr}`)
+}
