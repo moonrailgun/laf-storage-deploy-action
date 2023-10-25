@@ -1,4 +1,4 @@
-name: "Server Admin CI"
+name: "Test self action"
 
 on:
   workflow_dispatch:
