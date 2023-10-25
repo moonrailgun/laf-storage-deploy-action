@@ -1,0 +1,27 @@
+# action.yml
+name: 'Laf Deploy Static'
+author: 'moonrailgun <moonrailgun@gmail.com>'
+description: 'Deploy static file into laf storage'
+inputs:
+  server-url:
+    description: 'The server url of laf, default: https://laf.run'
+    required: false
+    default: 'https://laf.run'
+  laf-pat:
+    description: 'Laf pat which use for login.'
+    required: true
+  dist-path:
+    description: 'The path which upload static file'
+    required: false
+    default: './dist'
+  bucket-name:
+    description: 'Bucket name of you wanna store'
+    required: true
+
+runs:
+  using: 'node20'
+  main: 'main.mjs'
+
+branding:
+  icon: 'upload-cloud'
+  color: 'blue'

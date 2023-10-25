@@ -1,0 +1,21 @@
+name: "Server Admin CI"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: Deploy to laf
+        uses: moonrailgun/laf-storage-deploy-action@latest
+        with:
+          server-url: "https://laf.dev"
+          laf-pat: ${{ secrets.LAF_PAT }}
+          dist-path: "./test"
+          bucket-name: ${{ secrets.LAF_BUCKET_NAME }}
