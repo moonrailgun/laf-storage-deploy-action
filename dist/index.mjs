@@ -48431,7 +48431,7 @@ try {
     path__WEBPACK_IMPORTED_MODULE_2__.resolve(cwd, './.laf/.upload')
   );
 
-  await zx__WEBPACK_IMPORTED_MODULE_0__.$`laf storage push ./.upload ./`;
+  await zx__WEBPACK_IMPORTED_MODULE_0__.$`laf storage push ${input.bucketName} ./.upload`;
 } catch (p) {
   console.error('Error:', p);
   console.log(`Exit code: ${p.exitCode}`);

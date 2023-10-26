@@ -33,7 +33,7 @@ try {
     path.resolve(cwd, './.laf/.upload')
   );
 
-  await $`laf storage push ./.upload ./`;
+  await $`laf storage push ${input.bucketName} ./.upload`;
 } catch (p) {
   console.error('Error:', p);
   console.log(`Exit code: ${p.exitCode}`);
