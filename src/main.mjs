@@ -12,6 +12,8 @@ const input = {
   bucketName: core.getInput('bucket-name'),
 };
 
+const cwd = process.cwd();
+
 try {
   await $`npm i laf-cli -g`;
 
@@ -26,11 +28,15 @@ try {
   await $`laf app init ${input.lafAppId}`;
   await $`laf storage list`;
 
-  await fs.copy(input.distPath, './.laf/.upload');
+  await fs.copy(
+    path.resolve(cwd, input.distPath),
+    path.resolve(cwd, './.laf/.upload')
+  );
 
   await $`laf storage push ./.upload ./`;
 } catch (p) {
+  console.error('Error:', p);
   console.log(`Exit code: ${p.exitCode}`);
   console.log(`Error: ${p.stderr}`);
-  process.exit(p.exitCode);
+  process.exit(p.exitCode || 1);
 }

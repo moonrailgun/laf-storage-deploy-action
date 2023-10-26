@@ -48410,6 +48410,8 @@ const input = {
   bucketName: _actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput('bucket-name'),
 };
 
+const cwd = process.cwd();
+
 try {
   await zx__WEBPACK_IMPORTED_MODULE_0__.$`npm i laf-cli -g`;
 
@@ -48424,13 +48426,17 @@ try {
   await zx__WEBPACK_IMPORTED_MODULE_0__.$`laf app init ${input.lafAppId}`;
   await zx__WEBPACK_IMPORTED_MODULE_0__.$`laf storage list`;
 
-  await fs_extra__WEBPACK_IMPORTED_MODULE_3__.copy(input.distPath, './.laf/.upload');
+  await fs_extra__WEBPACK_IMPORTED_MODULE_3__.copy(
+    path__WEBPACK_IMPORTED_MODULE_2__.resolve(cwd, input.distPath),
+    path__WEBPACK_IMPORTED_MODULE_2__.resolve(cwd, './.laf/.upload')
+  );
 
   await zx__WEBPACK_IMPORTED_MODULE_0__.$`laf storage push ./.upload ./`;
 } catch (p) {
+  console.error('Error:', p);
   console.log(`Exit code: ${p.exitCode}`);
   console.log(`Error: ${p.stderr}`);
-  process.exit(p.exitCode)
+  process.exit(p.exitCode || 1);
 }
 
 __webpack_async_result__();
