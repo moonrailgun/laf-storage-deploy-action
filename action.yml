@@ -3,7 +3,7 @@ name: 'Laf Deploy Static'
 author: 'moonrailgun <moonrailgun@gmail.com>'
 description: 'Deploy static file into laf storage'
 inputs:
-  server-url:
+  laf-server:
     description: 'The server url of laf, default: https://laf.run'
     required: false
     default: 'https://laf.run'
@@ -13,13 +13,13 @@ inputs:
   laf-appid:
     description: 'Laf appid which use for upload.'
     required: true
+  laf-bucket-name:
+    description: 'Bucket name of you wanna store'
+    required: true
   dist-path:
     description: 'The path which upload static file'
     required: false
     default: './dist'
-  bucket-name:
-    description: 'Bucket name of you wanna store'
-    required: true
 
 runs:
   using: 'node20'

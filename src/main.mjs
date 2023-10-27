@@ -5,17 +5,18 @@ import fs from 'fs-extra';
 import path from 'path';
 
 const input = {
-  serverUrl: core.getInput('server-url'),
+  serverUrl: core.getInput('laf-server'),
   lafPat: core.getInput('laf-pat'),
   lafAppId: core.getInput('laf-appid'),
+  bucketName: core.getInput('laf-bucket-name'),
   distPath: core.getInput('dist-path'),
-  bucketName: core.getInput('bucket-name'),
 };
 
 const cwd = process.cwd();
 
 try {
-  await $`npm i laf-cli -g`;
+  // await $`npm i laf-cli -g`;
+  await $`npm i nw-laf-cli -g`; // use nightly version
 
   await $`laf user add dev -r ${input.serverUrl}`;
   await $`laf user switch dev`;

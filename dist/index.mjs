@@ -48403,17 +48403,18 @@ __nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependen
 
 
 const input = {
-  serverUrl: _actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput('server-url'),
+  serverUrl: _actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput('laf-server'),
   lafPat: _actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput('laf-pat'),
   lafAppId: _actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput('laf-appid'),
+  bucketName: _actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput('laf-bucket-name'),
   distPath: _actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput('dist-path'),
-  bucketName: _actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput('bucket-name'),
 };
 
 const cwd = process.cwd();
 
 try {
-  await zx__WEBPACK_IMPORTED_MODULE_0__.$`npm i laf-cli -g`;
+  // await $`npm i laf-cli -g`;
+  await zx__WEBPACK_IMPORTED_MODULE_0__.$`npm i nw-laf-cli -g`; // use nightly version
 
   await zx__WEBPACK_IMPORTED_MODULE_0__.$`laf user add dev -r ${input.serverUrl}`;
   await zx__WEBPACK_IMPORTED_MODULE_0__.$`laf user switch dev`;
