@@ -26,3 +26,7 @@ You can get server `pat`, `appid`, `bucket-name` from laf platform
 | laf-appid | true |  | Laf appid which use for upload |
 | laf-bucket-name | true |  | Bucket name of you wanna store |
 | dist-path | false | ./dist | The path which upload static file |
+
+## Example in real world
+
+- [Laf deploy on Tailchat](https://github.com/msgbyte/tailchat/blob/master/.github/workflows/deploy-laf.yml)
