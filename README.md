@@ -1,6 +1,6 @@
 # laf-storage-deploy-action
 
-Deploy static file into laf storage.
+Deploy static file into laf storage with github action.
 
 Then you can deploy your static website easy with laf static server
 
